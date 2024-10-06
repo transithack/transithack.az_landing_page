@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transit Hack</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+          max-width: 800px;
+          width: 80%;
+          margin: 0 auto;
+          overflow-x: visible;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+        }
+
+        .logo {
+            max-width: calc(0.6 * 800px);
+            width: 60%;
+            height: auto;
+        }
+
+        .svg-container-wrapper {
+          position: relative;
+          width: 100%;
+          max-height: 200px;
+          min-height: 120px;
+          height: 15vw;
+        }
+
+        .svg-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          width: 100vw;
+          /* together with width: 100vw breaks out of parent .container's width restrictions */
+          margin-left: calc(-1 * (50vw - (min(800px, 100vw * 0.8)) / 2));
+          height: 100%; /* Match the height of the inner SVG */
+        }
+
+        .line {
+          fill: none;
+          vector-effect: non-scaling-stroke;
+          stroke-linejoin: round;
+        }
+
+        .line-thin {
+          stroke-width: 8px;
+        }
+
+        .line-thick {
+          stroke-width: 24px;
+          stroke-opacity: 0.5;
+        }
+
+        .line-orange {
+          stroke: #FF4D00;
+        }
+
+        .line-purple {
+          stroke: #CA009E;
+        }
+
+        .line-blue {
+          stroke: #0390D5;
+        }
+
+        .line-green {
+          stroke: #009C4E;
+        }
+
+        .line-outer_continuation {
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: 0%;
+          height: 100%;
+        }
+
+        .line-inner {
+          flex-grow: 0;
+          flex-shrink: 0;
+          width: calc(15vw * 2); /* 15vw = .svg-container-wrapper height */
+          max-width: calc(200px * 2); /* 200px = .svg-container-wrapper max-height */
+          min-width: calc(120px * 2); /* 120px = .svg-container-wrapper min-height */
+        }
+
+    </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="svg-container-wrapper">
+      <div class="svg-container" id="line-ascend-orange">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-orange"
+              d="M 0,75
+                H 100"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-orange"
+              d="M 0,75
+                H 100"
+            />
+          </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-inner">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-orange"
+              d="M 0,75
+                H 30
+                L 70,25
+                H 100"
+              fill="none"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-orange"
+              d="M 0,75
+                H 30
+                L 70,25
+                H 100"
+            />
+          </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-orange"
+              d="M 0,25
+                H 100"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-orange"
+              d="M 0,25
+                H 100"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <div class="svg-container" id="line-straight-purple">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-purple"
+              d="M 0,50
+                H 100"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-purple"
+              d="M 0,50
+                H 100"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+
+
+    <div class="logo-container">
+      <img src="transithack_logo.png" alt="Transit Hack Logo" class="logo">
+    </div>
+
+
+    <div class="svg-container-wrapper">
+      <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-blue"
+              d="M 0,75
+                H 100"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-blue"
+              d="M 0,75
+                H 100"
+            />
+          </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-inner">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-blue"
+              d="M 0,75
+                H 30
+                L 70,25
+                H 100"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-blue"
+              d="M 0,75
+                H 30
+                L 70,25
+                H 100"
+            />
+          </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-blue"
+              d="M 0,25
+                H 100"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-blue"
+              d="M 0,25
+                H 100"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <div class="svg-container" id="line-straight-green">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+          <defs>
+            <clipPath id="boundingBox">
+              <rect x="0" y="0" width="100%" height="100%" />
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thick line-green"
+              d="M 0,50
+                H 100"
+            />
+          </g>
+
+          <g clip-path="url(#boundingBox)">
+            <path
+              class="line line-thin line-green"
+              d="M 0,50
+                H 100"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
