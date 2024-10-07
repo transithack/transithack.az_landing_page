@@ -7,7 +7,7 @@
     <style>
         @font-face {
           font-family: "Acumin";
-          src: url("./Acumin-Variable-Concept.ttf") format("truetype");
+          src: url("static/Acumin-Variable-Concept.ttf") format("truetype");
         }
 
         body, html {
@@ -27,6 +27,10 @@
 
         .break-disappear {
           display: inline-block;
+        }
+
+        .delimiter {
+          padding: 0 0.75em;
         }
 
         .condensed {
@@ -232,7 +236,7 @@
           color: #4E5658;
         }
 
-        div > .solid-button {
+        .solid-button {
           margin-top: 1.2em;
         }
 
@@ -296,7 +300,7 @@
             line-height: 1.5;
           }
 
-          div > .solid-button {
+          .solid-button {
             margin-top: 0.5em;
           }
 
@@ -316,6 +320,7 @@
           .blue_blob-container-text {
             flex-direction: row;
             font-size: 3em;
+            font-weight: 400;
           }
 
           .blue_blob-container-text span {
@@ -402,6 +407,28 @@
           .line-thin {
             stroke-width: 6px;
           }
+        }
+
+        /* MAIN CONTENT */
+
+        .main-content {
+          font-size: 1.2em;
+        }
+
+        h1, h2, h3, h4 {
+          font-stretch: condensed;
+        }
+
+        h1 {
+          font-size: 3em;
+        }
+
+        h2 {
+          font-size: 2.5em;
+        }
+
+        h3 {
+          font-size: 1.8em;
         }
 
     </style>
@@ -529,7 +556,7 @@
 
       <div class="hero-container-inner">
         <div class="logo-container">
-          <img src="transithack_logo.png" alt="Transit Hack Logo" class="logo">
+          <img src="static/transithack_logo.png" alt="Transit Hack Logo" class="logo">
           <div class="blue_blob-container">
             <svg class="blue_blob" viewBox="0 0 328 391" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
               <g filter="url(#filter0_f_238_236)">
@@ -553,8 +580,8 @@
 
         <div class="text-wrapper">
           <div class="condensed title responsive-text"><span class="break-800px">PUBLIC TRANSPORT &</span> <span class="break-800px">URBAN PLANNING</span> <span class="break-800px">HACKATHON</span></div>
-          <div class="condensed subtitle responsive-text"><span class="break-800px">BAKU HIGHER OIL SCHOOL</span> <span class="break-disappear">|</span> <span class="break-800px">IN-PRESENSE & ONLINE</span> <span class="break-disappear">|</span> <span class="break-800px">FREE PARTICIPATION</span></div>
-          <span class="solid-button condensed">SIGN UP NOW</span>
+          <div class="condensed subtitle responsive-text"><span class="break-800px">BAKU HIGHER OIL SCHOOL</span> <span class="break-disappear delimiter">  |  </span> <span class="break-800px">IN-PRESENCE & ONLINE</span> <span class="break-disappear delimiter">  |  </span> <span class="break-800px">FREE PARTICIPATION</span></div>
+          <a href="https://forms.gle/47LgVoxu85xfpWeKA" target="_blank"><span class="solid-button condensed">SIGN UP NOW</span></a>
         </div>
       </div>
 
@@ -674,79 +701,84 @@
       </div>
     </div>
 
-    <h1>Welcome to TransitHack: Revolutionizing Baku's Public Transport!</h1>
+    <div class="main-content">
+      <div class="sponsor-logo-container">
+        
+      </div>
 
-    <p>Are you passionate about improving urban mobility? Join us for TransitHack, a groundbreaking hackathon focused on transforming Baku's public transportation system!</p>
+      <h1>Welcome to TransitHack: Revolutionizing Baku's Public Transport!</h1>
 
-    <h2>Event Overview</h2>
+      <p>Are you passionate about improving urban mobility? Join us for TransitHack, a groundbreaking hackathon focused on transforming Baku's public transportation system!</p>
 
-    <p>TransitHack is a unique 48-hour event where participants will work on innovative solutions to enhance public transport coverage, efficiency, and attractiveness in Baku. Our goal? To reduce car usage and decrease traffic congestion in our beautiful city.</p>
+      <h2>Event Overview</h2>
 
-    <h3>What makes TransitHack special?</h3>
+      <p>TransitHack is a unique 48-hour event where participants will work on innovative solutions to enhance public transport coverage, efficiency, and attractiveness in Baku. Our goal? To reduce car usage and decrease traffic congestion in our beautiful city.</p>
 
-    <ol>
-        <li><strong>Research &amp; Development Focus</strong>: We prioritize solving real urban challenges over creating business models. Your ideas don't need to be the next unicorn startup - they just need to make a positive impact on Baku's transportation system.</li>
+      <h3>What makes TransitHack special?</h3>
 
-        <li><strong>Interdisciplinary Approach</strong>: This isn't just a coding event! We welcome participants from various backgrounds, including:
-            <ul>
-                <li>Software development</li>
-                <li>Urban planning</li>
-                <li>Civil engineering</li>
-                <li>Mathematics</li>
-                <li>Economics</li>
-                <li>Public policy</li>
-                <li>And more!</li>
-            </ul>
-        </li>
+      <ol>
+          <li><strong>Research &amp; Development Focus</strong>: We prioritize solving real urban challenges over creating business models. Your ideas don't need to be the next unicorn startup - they just need to make a positive impact on Baku's transportation system.</li>
 
-        <li><strong>Real-World Impact</strong>: Your projects will be judged based on their potential to improve public utility, value to citizens, innovation, and feasibility.</li>
-    </ol>
+          <li><strong>Interdisciplinary Approach</strong>: This isn't just a coding event! We welcome participants from various backgrounds, including:
+              <ul>
+                  <li>Software development</li>
+                  <li>Urban planning</li>
+                  <li>Civil engineering</li>
+                  <li>Mathematics</li>
+                  <li>Economics</li>
+                  <li>Public policy</li>
+                  <li>And more!</li>
+              </ul>
+          </li>
 
-    <h2>Project Ideas</h2>
+          <li><strong>Real-World Impact</strong>: Your projects will be judged based on their potential to improve public utility, value to citizens, innovation, and feasibility.</li>
+      </ol>
 
-    <p>Need inspiration? Here are some potential project areas:</p>
+      <h2>Project Ideas</h2>
 
-    <ol>
-        <li><strong>On-Demand Public Transport</strong>: Design a system for dynamic minibus routes based on real-time passenger demand.</li>
+      <p>Need inspiration? Here are some potential project areas:</p>
 
-        <li><strong>Public Transport Coverage Heatmap</strong>: Create an algorithm to visualize and quantify the quality of public transport connections across Baku.</li>
+      <ol>
+          <li><strong>On-Demand Public Transport</strong>: Design a system for dynamic minibus routes based on real-time passenger demand.</li>
 
-        <li><strong>Extended Service Hours Analysis</strong>: Conduct a cost-benefit analysis of extending public transport operating hours.</li>
+          <li><strong>Public Transport Coverage Heatmap</strong>: Create an algorithm to visualize and quantify the quality of public transport connections across Baku.</li>
 
-        <li><strong>Traffic Flow Optimization</strong>: Develop solutions to redistribute traffic from major avenues to smaller streets, improving overall city mobility.</li>
+          <li><strong>Extended Service Hours Analysis</strong>: Conduct a cost-benefit analysis of extending public transport operating hours.</li>
 
-        <li><strong>Regional Rail Network Planning</strong>: Propose an optimal railway route for the greater Baku area, including cost-benefit analysis.</li>
-    </ol>
+          <li><strong>Traffic Flow Optimization</strong>: Develop solutions to redistribute traffic from major avenues to smaller streets, improving overall city mobility.</li>
 
-    <h2>What to Expect</h2>
+          <li><strong>Regional Rail Network Planning</strong>: Propose an optimal railway route for the greater Baku area, including cost-benefit analysis.</li>
+      </ol>
 
-    <ul>
-        <li><strong>Duration</strong>: 48 hours of intense collaboration and innovation</li>
-        <li><strong>Team Formation</strong>: Form teams of 3-5 people or join as an individual and meet new teammates</li>
-        <li><strong>Mentorship</strong>: Access to expert mentors in urban planning, technology, and transportation</li>
-        <li><strong>Workshops</strong>: Skill-building sessions on relevant tools and methodologies</li>
-        <li><strong>Judging</strong>: Present your project to a panel of esteemed experts in the field</li>
-    </ul>
+      <h2>What to Expect</h2>
 
-    <h2>Judging Criteria</h2>
+      <ul>
+          <li><strong>Duration</strong>: 48 hours of intense collaboration and innovation</li>
+          <li><strong>Team Formation</strong>: Form teams of 3-5 people or join as an individual and meet new teammates</li>
+          <li><strong>Mentorship</strong>: Access to expert mentors in urban planning, technology, and transportation</li>
+          <li><strong>Workshops</strong>: Skill-building sessions on relevant tools and methodologies</li>
+          <li><strong>Judging</strong>: Present your project to a panel of esteemed experts in the field</li>
+      </ul>
 
-    <p>Your projects will be evaluated based on:</p>
-    <ul>
-        <li>Public utility and value to citizens</li>
-        <li>Innovation and creativity</li>
-        <li>Technical feasibility</li>
-        <li>Quality of research and analysis</li>
-        <li>Potential for real-world implementation</li>
-    </ul>
+      <h2>Judging Criteria</h2>
 
-    <p>Note: We focus on the quality of your ideas and solutions, not on polished presentations or business pitches.</p>
+      <p>Your projects will be evaluated based on:</p>
+      <ul>
+          <li>Public utility and value to citizens</li>
+          <li>Innovation and creativity</li>
+          <li>Technical feasibility</li>
+          <li>Quality of research and analysis</li>
+          <li>Potential for real-world implementation</li>
+      </ul>
 
-    <h2>Ready to Transform Baku's Transportation?</h2>
+      <p>Note: We focus on the quality of your ideas and solutions, not on polished presentations or business pitches.</p>
 
-    <p>Join us at TransitHack and be part of the solution to create a more efficient, accessible, and sustainable public transport system for Baku. Whether you're a coder, urban planner, or passionate citizen, your ideas can make a difference!</p>
+      <h2>Ready to Transform Baku's Transportation?</h2>
 
-    <p>Register now and let's revolutionize urban mobility together!</p>
+      <p>Join us at TransitHack and be part of the solution to create a more efficient, accessible, and sustainable public transport system for Baku. Whether you're a coder, urban planner, or passionate citizen, your ideas can make a difference!</p>
 
+      <p>Register now and let's revolutionize urban mobility together!</p>
+    </div>
   </div>
 
   <script>
@@ -979,7 +1011,7 @@
           document.getElementById('line-thick-orange-center'),
           document.getElementById('line-thick-orange-right'),
         ],
-        800,
+        1400,
         true
       );
 
@@ -989,21 +1021,21 @@
           document.getElementById('line-thick-blue-center'),
           document.getElementById('line-thick-blue-right'),
         ],
-        1000,
+        1200,
       );
 
       animateCompositeContinuousPath(
         [
           document.getElementById('line-thick-purple'),
         ],
-        600,
+        1000,
       );
 
       animateCompositeContinuousPath(
         [
           document.getElementById('line-thick-green'),
         ],
-        800,
+        1200,
       );
     }
 
@@ -1019,7 +1051,7 @@
         {
           duration,
           delay,
-          easing: 'linear',
+          easing: 'ease-in-out',
           fill: 'forwards',
           iterations: Infinity,
         }
@@ -1034,7 +1066,7 @@
 
       animateContinuousSingleDash(
         document.getElementById('line-thin-green'),
-        6000,
+        8000,
       );
     }
 
