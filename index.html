@@ -256,6 +256,7 @@
           <g clip-path="url(#boundingBox)">
             <path
               class="line line-thick line-orange"
+              id="line-thick-orange-left"
               d="M 0,75
                 H 100"
             />
@@ -264,6 +265,7 @@
           <g clip-path="url(#boundingBox)">
             <path
               class="line line-thin line-orange"
+              id="line-thin-orange-left"
               d="M 0,75
                 H 100"
             />
@@ -280,6 +282,7 @@
           <g clip-path="url(#boundingBox)">
             <path
               class="line line-thick line-orange"
+              id="line-thick-orange-center"
               d="M 0,75
                 H 30
                 L 70,25
@@ -291,6 +294,7 @@
           <g clip-path="url(#boundingBox)">
             <path
               class="line line-thin line-orange"
+              id="line-thin-orange-center"
               d="M 0,75
                 H 30
                 L 70,25
@@ -309,6 +313,7 @@
           <g clip-path="url(#boundingBox)">
             <path
               class="line line-thick line-orange"
+              id="line-thick-orange-right"
               d="M 0,25
                 H 100"
             />
@@ -317,6 +322,7 @@
           <g clip-path="url(#boundingBox)">
             <path
               class="line line-thin line-orange"
+              id="line-thin-orange-right"
               d="M 0,25
                 H 100"
             />
@@ -334,6 +340,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thick-purple"
               class="line line-thick line-purple"
               d="M 0,50
                 H 100"
@@ -342,6 +349,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thin-purple"
               class="line line-thin line-purple"
               d="M 0,50
                 H 100"
@@ -389,6 +397,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thick-blue-left"
               class="line line-thick line-blue"
               d="M 0,75
                 H 100"
@@ -397,6 +406,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thin-blue-left"
               class="line line-thin line-blue"
               d="M 0,75
                 H 100"
@@ -413,6 +423,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thick-blue-center"
               class="line line-thick line-blue"
               d="M 0,75
                 H 30
@@ -423,6 +434,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thin-blue-center"
               class="line line-thin line-blue"
               d="M 0,75
                 H 30
@@ -441,6 +453,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thick-blue-right"
               class="line line-thick line-blue"
               d="M 0,25
                 H 100"
@@ -449,6 +462,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thin-blue-right"
               class="line line-thin line-blue"
               d="M 0,25
                 H 100"
@@ -467,6 +481,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thick-green"
               class="line line-thick line-green"
               d="M 0,50
                 H 100"
@@ -475,6 +490,7 @@
 
           <g clip-path="url(#boundingBox)">
             <path
+              id="line-thin-green"
               class="line line-thin line-green"
               d="M 0,50
                 H 100"
@@ -483,7 +499,94 @@
         </svg>
       </div>
     </div>
+
   </div>
+
+  <script>
+    function scalePath(path) {
+      const scaleRatio = path.getBoundingClientRect().width / path.getBBox().width;
+      const ogPathLength = path.getTotalLength();
+      const pathLength = ogPathLength * scaleRatio;
+
+      path.style.strokeDasharray = pathLength;
+      path.style.strokeDashoffset = pathLength;
+
+      return pathLength;
+    }
+
+    /*
+    It'd be possible to use `pathLength` and animate only using CSS,
+    but `non-scaling-stroke` and `preserveAspectRatio=none` breaks `pathLength`
+    */
+    function animateSinglePath(path, duration, delay) {
+      const pathLength = scalePath(path);
+
+      const animation = path.animate(
+        [
+          { strokeDashoffset: pathLength },
+          { strokeDashoffset: 0 }
+        ],
+        {
+          duration,
+          delay,
+          easing: 'linear',
+          fill: 'forwards',
+        }
+      );
+
+      window.addEventListener('resize', () => {
+        animation.finish();
+        scalePath(path);
+      });
+    }
+
+    function animateCompositeContinuousPath(paths, totalDuration) {
+      const singlePathDuration = totalDuration / paths.length;
+
+      for (const [i, path] of paths.entries()) {
+        animateSinglePath(path, singlePathDuration, i * singlePathDuration);
+      }
+    }
+
+    function animateThickLines() {
+
+      animateCompositeContinuousPath(
+        [
+          document.getElementById('line-thick-orange-left'),
+          document.getElementById('line-thick-orange-center'),
+          document.getElementById('line-thick-orange-right'),
+        ],
+        800,
+        true
+      );
+
+      animateCompositeContinuousPath(
+        [
+          document.getElementById('line-thick-blue-left'),
+          document.getElementById('line-thick-blue-center'),
+          document.getElementById('line-thick-blue-right'),
+        ],
+        1000,
+      );
+
+      animateCompositeContinuousPath(
+        [
+          document.getElementById('line-thick-purple'),
+        ],
+        600,
+      );
+
+      animateCompositeContinuousPath(
+        [
+          document.getElementById('line-thick-green'),
+        ],
+        800,
+      );
+    }
+
+    document.addEventListener('DOMContentLoaded', animateThickLines());
+
+  </script>
 </body>
 
 </html>
