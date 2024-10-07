@@ -11,6 +11,7 @@
         }
 
         body, html {
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
             font-family: "Acumin";
@@ -24,9 +25,12 @@
           display: inline-block;
         }
 
-        .titular {
+        .break-disappear {
+          display: inline-block;
+        }
+
+        .condensed {
           font-stretch: extra-condensed;
-          text-align: center;
         }
 
         .container {
@@ -34,19 +38,34 @@
           width: 80%;
           margin: 0 auto;
           overflow-x: visible;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .hero-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100vh;
+        }
+
+        .hero-container-inner {
+          text-align: center;
         }
 
         .logo-container {
           display: flex;
           justify-content: center;
           align-items: center;
-          margin: 3em auto;
+          height: 20vh;
+          max-height: 170px;
+          min-height: 100px;
         }
 
         .logo {
           max-width: calc(0.6 * 800px);
           width: 60%;
-          min-width: 350px;
+          min-width: 250px;
           height: auto;
         }
 
@@ -79,6 +98,25 @@
             * 0.4 /* height:width ratio of logo */
             * 2 /* slightly larger */
           );
+          animation: floatAnimation 6s ease-in-out infinite;
+        }
+
+        @keyframes floatAnimation {
+          0% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(5px, 5px);
+          }
+          50% {
+            transform: translate(0, 5px);
+          }
+          75% {
+            transform: translate(-5px, 0);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
         }
 
         .blue_blob {
@@ -86,6 +124,7 @@
           width: 100%;
           height: 100%;
           object-fit: contain;
+          min-height: 100px;
         }
 
         .blue_blob-container-text {
@@ -116,9 +155,10 @@
         .svg-container-wrapper {
           position: relative;
           width: 100%;
-          max-height: 200px;
-          min-height: 120px;
-          height: 15vw;
+          max-height: 120px;
+          min-height: 80px;
+          height: 10vw;
+          margin: 1em 0;
         }
 
         .svg-container {
@@ -178,19 +218,56 @@
           min-width: calc(120px * 2); /* 120px = .svg-container-wrapper min-height */
         }
 
-        .title {
-          padding: 0.8em;
-          /*
-          2.5em is approx the right size for full-width breakpoint
-          em = 16px
-          breakpoint: 800px
+        .text-wrapper {
+          margin-top: 4em;
+        }
 
-          Find analog of 2.5em for the responsive container size
-          */
+        .title {
           font-size: 2.5em;
         }
 
+        .subtitle {
+          margin-top: 0.25em;
+          font-size: 1.5em;
+          color: #4E5658;
+        }
+
+        div > .solid-button {
+          margin-top: 1.2em;
+        }
+
+        .solid-button {
+          background-color: rgba(0, 156, 78, 0);
+          display: inline-block;
+          padding: 0.4em 0.5em 0.25em 0.5em;
+          font-size: 2em;
+          color: #009C4E;
+          font-weight: 600;
+          border-radius: 0.25em;
+          border: 2px solid #009C4E;
+        }
+
+        .solid-button:hover, .solid-button:focus, .solid-button:active {
+          background-color: #009C4E;
+          display: inline-block;
+          color: white;
+          transition: 0.5s;
+          cursor: pointer;
+        }
+
+        .line-button {
+          color: #009C4E;
+          display: inline-block;
+          padding: 0.25em 0.5em;
+          font-size: 2em;
+          border-bottom: 2px solid #009C4E;
+        }
+
         @media (max-width: 800px) {
+          .hero-container-inner {
+            max-height: 600px;
+          }
+          
           .responsive-text {
             white-space: normal;
           }
@@ -199,14 +276,34 @@
             display: block;
           }
           
+          .break-disappear {
+            display: none;
+          }
+
+          .text-wrapper {
+            margin-top: 0.5em;
+          }
+          
           .title {
-            padding: 0em;
-            font-size: 2em;
+            margin-top: 0.4em;
+            font-size: 1.8em;
+            line-height: 1.2;
+          }
+
+          .subtitle {
+            margin-top: 0.4em;
+            font-size: 1.5em;
+            line-height: 1.5;
+          }
+
+          div > .solid-button {
+            margin-top: 0.5em;
           }
 
           .logo-container {
             flex-direction: column;
-            margin: 4em auto 1em;
+            height: 30vh;
+            max-height: none;
           }
 
           .blue_blob-container {
@@ -214,15 +311,11 @@
             left: auto;
             width: 100%;
             height: 6em;
-            margin: 2em;
           }
 
           .blue_blob-container-text {
             flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            padding-top: 0;
-            line-height: normal;
+            font-size: 3em;
           }
 
           .blue_blob-container-text span {
@@ -238,256 +331,348 @@
           }
         }
 
+        @media (max-width: 450px) {
+          .hero-container-inner {
+            max-height: 500px;
+          }
+          
+          .responsive-text {
+            white-space: normal;
+          }
+
+          .break-800px {
+            display: block;
+          }
+          
+          .break-disappear {
+            display: none;
+          }
+
+          .text-wrapper {
+            margin-top: 0.5em;
+          }
+          
+          .title {
+            margin-top: 0.25em;
+            font-size: 1.5em;
+            line-height: 1.2;
+          }
+
+          .subtitle {
+            margin-top: 0.25em;
+            font-size: 1.2em;
+            line-height: 1.5;
+          }
+
+          .solid-button {
+            font-size: 1.5em;
+            padding: 0.4em 0.5em 0.25em 0.5em;
+          }
+
+          div > .solid-button {
+            margin-top: 0.5em;
+          }
+
+          .logo-container {
+            flex-direction: column;
+            height: 30vh;
+            max-height: none;
+          }
+
+          .blue_blob-container {
+            position: relative;
+            left: auto;
+            width: 100%;
+            height: 6em;
+          }
+
+          .blue_blob-container-text {
+            flex-direction: row;
+            font-size: 2.5em;
+          }
+
+          .blue_blob-container-text span {
+            margin: 0 5px;
+          }
+
+          .line-thick {
+            stroke-width: 16px;
+          }
+
+          .line-thin {
+            stroke-width: 6px;
+          }
+        }
+
     </style>
 </head>
 
 <body>
   <div class="container">
 
-    <div class="svg-container-wrapper">
-      <div class="svg-container" id="line-ascend-orange">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
+    <div class="hero-container">
+      <div class="svg-container-wrapper">
+        <div class="svg-container" id="line-ascend-orange">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              class="line line-thick line-orange"
-              id="line-thick-orange-left"
-              d="M 0,75
-                H 100"
-            />
-          </g>
+            <g clip-path="url(#boundingBox)">
+              <path
+                class="line line-thick line-orange"
+                id="line-thick-orange-left"
+                d="M 0,90
+                  H 100"
+              />
+            </g>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              class="line line-thin line-orange"
-              id="line-thin-orange-left"
-              d="M 0,75
-                H 100"
-            />
-          </g>
-        </svg>
+            <g clip-path="url(#boundingBox)">
+              <path
+                class="line line-thin line-orange"
+                id="line-thin-orange-left"
+                d="M 0,90
+                  H 100"
+              />
+            </g>
+          </svg>
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-inner">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-inner">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              class="line line-thick line-orange"
-              id="line-thick-orange-center"
-              d="M 0,75
-                H 30
-                L 70,25
-                H 100"
-              fill="none"
-            />
-          </g>
+            <g clip-path="url(#boundingBox)">
+              <path
+                class="line line-thick line-orange"
+                id="line-thick-orange-center"
+                d="M 0,90
+                  H 30
+                  L 70,10
+                  H 100"
+                fill="none"
+              />
+            </g>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              class="line line-thin line-orange"
-              id="line-thin-orange-center"
-              d="M 0,75
-                H 30
-                L 70,25
-                H 100"
-            />
-          </g>
-        </svg>
+            <g clip-path="url(#boundingBox)">
+              <path
+                class="line line-thin line-orange"
+                id="line-thin-orange-center"
+                d="M 0,90
+                  H 30
+                  L 70,10
+                  H 100"
+              />
+            </g>
+          </svg>
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              class="line line-thick line-orange"
-              id="line-thick-orange-right"
-              d="M 0,25
-                H 100"
-            />
-          </g>
+            <g clip-path="url(#boundingBox)">
+              <path
+                class="line line-thick line-orange"
+                id="line-thick-orange-right"
+                d="M 0,10
+                  H 100"
+              />
+            </g>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              class="line line-thin line-orange"
-              id="line-thin-orange-right"
-              d="M 0,25
-                H 100"
-            />
-          </g>
-        </svg>
+            <g clip-path="url(#boundingBox)">
+              <path
+                class="line line-thin line-orange"
+                id="line-thin-orange-right"
+                d="M 0,10
+                  H 100"
+              />
+            </g>
+          </svg>
+        </div>
+
+        <div class="svg-container" id="line-straight-purple">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thick-purple"
+                class="line line-thick line-purple"
+                d="M 0,50
+                  H 100"
+              />
+            </g>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thin-purple"
+                class="line line-thin line-purple"
+                d="M 0,50
+                  H 100"
+              />
+            </g>
+          </svg>
+        </div>
       </div>
 
-      <div class="svg-container" id="line-straight-purple">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thick-purple"
-              class="line line-thick line-purple"
-              d="M 0,50
-                H 100"
-            />
-          </g>
+      <div class="hero-container-inner">
+        <div class="logo-container">
+          <img src="transithack_logo.png" alt="Transit Hack Logo" class="logo">
+          <div class="blue_blob-container">
+            <svg class="blue_blob" viewBox="0 0 328 391" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <g filter="url(#filter0_f_238_236)">
+                <path d="M255.454 304.526C249.97 324.555 232.677 339.11 212.006 341.094L111.188 350.77C94.7089 352.352 78.5153 345.674 67.9408 332.937L52.3744 314.186C44.9234 305.211 40.8449 293.913 40.8449 282.249L40.8449 234.867C40.8449 229.523 41.7017 224.213 43.3828 219.139L89.6343 79.5635C95.8443 60.8229 112.5 47.4913 132.146 45.5366L184.572 40.3206C191.349 39.6463 198.192 40.3636 204.682 42.4286L241.351 54.0959C259.94 60.0105 273.392 76.1957 275.806 95.5526L286.118 178.21C286.928 184.703 286.456 191.292 284.728 197.603L255.454 304.526Z" fill="#e2f4fd"/>
+              </g>
+              <defs>
+                <filter id="filter0_f_238_236" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                  <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur_238_236"/>
+                </filter>
+              </defs>
+            </svg>
+            <div class="blue_blob-container-text">
+              <span>1-3</span>
+              <span>NOV</span>
+              <span>2024</span>
+            </div>
+          </div>
+        </div>
 
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thin-purple"
-              class="line line-thin line-purple"
-              d="M 0,50
-                H 100"
-            />
-          </g>
-        </svg>
+        <div class="text-wrapper">
+          <div class="condensed title responsive-text"><span class="break-800px">PUBLIC TRANSPORT &</span> <span class="break-800px">URBAN PLANNING</span> <span class="break-800px">HACKATHON</span></div>
+          <div class="condensed subtitle responsive-text"><span class="break-800px">BAKU HIGHER OIL SCHOOL</span> <span class="break-disappear">|</span> <span class="break-800px">IN-PRESENSE & ONLINE</span> <span class="break-disappear">|</span> <span class="break-800px">FREE PARTICIPATION</span></div>
+          <span class="solid-button condensed">SIGN UP NOW</span>
+        </div>
       </div>
-    </div>
 
 
+      <div class="svg-container-wrapper">
+        <div class="svg-container">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
 
-    <div class="logo-container">
-      <img src="transithack_logo.png" alt="Transit Hack Logo" class="logo">
-      <div class="blue_blob-container">
-        <svg class="blue_blob" viewBox="0 0 328 391" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <g filter="url(#filter0_f_238_236)">
-            <path d="M255.454 304.526C249.97 324.555 232.677 339.11 212.006 341.094L111.188 350.77C94.7089 352.352 78.5153 345.674 67.9408 332.937L52.3744 314.186C44.9234 305.211 40.8449 293.913 40.8449 282.249L40.8449 234.867C40.8449 229.523 41.7017 224.213 43.3828 219.139L89.6343 79.5635C95.8443 60.8229 112.5 47.4913 132.146 45.5366L184.572 40.3206C191.349 39.6463 198.192 40.3636 204.682 42.4286L241.351 54.0959C259.94 60.0105 273.392 76.1957 275.806 95.5526L286.118 178.21C286.928 184.703 286.456 191.292 284.728 197.603L255.454 304.526Z" fill="#e2f4fd"/>
-          </g>
-          <defs>
-            <filter id="filter0_f_238_236" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-              <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur_238_236"/>
-            </filter>
-          </defs>
-        </svg>
-        <div class="blue_blob-container-text">
-          <span>1-3</span>
-          <span>NOV</span>
-          <span>2024</span>
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thick-blue-left"
+                class="line line-thick line-blue"
+                d="M 0,90
+                  H 100"
+              />
+            </g>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thin-blue-left"
+                class="line line-thin line-blue"
+                d="M 0,90
+                  H 100"
+              />
+            </g>
+          </svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-inner">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thick-blue-center"
+                class="line line-thick line-blue"
+                d="M 0,90
+                  H 30
+                  L 70,10
+                  H 100"
+              />
+            </g>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thin-blue-center"
+                class="line line-thin line-blue"
+                d="M 0,90
+                  H 30
+                  L 70,10
+                  H 100"
+              />
+            </g>
+          </svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thick-blue-right"
+                class="line line-thick line-blue"
+                d="M 0,10
+                  H 100"
+              />
+            </g>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thin-blue-right"
+                class="line line-thin line-blue"
+                d="M 0,10
+                  H 100"
+              />
+            </g>
+          </svg>
+        </div>
+
+        <div class="svg-container" id="line-straight-green">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
+            <defs>
+              <clipPath id="boundingBox">
+                <rect x="0" y="0" width="100%" height="100%" />
+              </clipPath>
+            </defs>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thick-green"
+                class="line line-thick line-green"
+                d="M 0,50
+                  H 100"
+              />
+            </g>
+
+            <g clip-path="url(#boundingBox)">
+              <path
+                id="line-thin-green"
+                class="line line-thin line-green"
+                d="M 0,50
+                  H 100"
+              />
+            </g>
+          </svg>
         </div>
       </div>
     </div>
-
-    <div class="titular title responsive-text"><span class="break-800px">PUBLIC TRANSPORT & URBAN PLANNING</span> <span class="break-800px">HACKATHON</span></div>
-
-    <div class="svg-container-wrapper">
-      <div class="svg-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
-
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thick-blue-left"
-              class="line line-thick line-blue"
-              d="M 0,75
-                H 100"
-            />
-          </g>
-
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thin-blue-left"
-              class="line line-thin line-blue"
-              d="M 0,75
-                H 100"
-            />
-          </g>
-        </svg>
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-inner">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
-
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thick-blue-center"
-              class="line line-thick line-blue"
-              d="M 0,75
-                H 30
-                L 70,25
-                H 100"
-            />
-          </g>
-
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thin-blue-center"
-              class="line line-thin line-blue"
-              d="M 0,75
-                H 30
-                L 70,25
-                H 100"
-            />
-          </g>
-        </svg>
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
-
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thick-blue-right"
-              class="line line-thick line-blue"
-              d="M 0,25
-                H 100"
-            />
-          </g>
-
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thin-blue-right"
-              class="line line-thin line-blue"
-              d="M 0,25
-                H 100"
-            />
-          </g>
-        </svg>
-      </div>
-
-      <div class="svg-container" id="line-straight-green">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
-          <defs>
-            <clipPath id="boundingBox">
-              <rect x="0" y="0" width="100%" height="100%" />
-            </clipPath>
-          </defs>
-
-          <g clip-path="url(#boundingBox)">
-            <path
-              id="line-thick-green"
-              class="line line-thick line-green"
-              d="M 0,50
-                H 100"
-            />
-          </g>
-
 
     <h1>Welcome to TransitHack: Revolutionizing Baku's Public Transport!</h1>
 
@@ -611,7 +796,6 @@
     }
 
     function animateThickLines() {
-
       animateCompositeContinuousPath(
         [
           document.getElementById('line-thick-orange-left'),
@@ -646,7 +830,44 @@
       );
     }
 
+    function animateContinuousSingleDash(path, duration, delay) {
+      const pathLength = scalePath(path);
+      path.style.strokeDasharray = `${pathLength * 0.2}, ${pathLength * 0.8}`;
+
+      const animation = path.animate(
+        [
+          { strokeDashoffset: pathLength },
+          { strokeDashoffset: 0 }
+        ],
+        {
+          duration,
+          delay,
+          easing: 'linear',
+          fill: 'forwards',
+          iterations: Infinity,
+        }
+      );
+
+      window.addEventListener('resize', () => {
+        animation.finish();
+        scalePath(path);
+      });
+    }
+
+    function animateThinLines() {
+      animateContinuousSingleDash(
+        document.getElementById('line-thin-purple'),
+        4000,
+      );
+
+      animateContinuousSingleDash(
+        document.getElementById('line-thin-green'),
+        6000,
+      );
+    }
+
     document.addEventListener('DOMContentLoaded', animateThickLines());
+    document.addEventListener('DOMContentLoaded', animateThinLines());
 
   </script>
 </body>
