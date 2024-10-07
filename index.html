@@ -5,11 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transit Hack</title>
     <style>
+        @font-face {
+          font-family: "Acumin";
+          src: url("./Acumin-Variable-Concept.ttf") format("truetype");
+        }
+
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
+            font-family: "Acumin";
+        }
+
+        .responsive-text {
+          white-space: nowrap;
+        }
+
+        .break-800px {
+          display: inline-block;
+        }
+
+        .titular {
+          font-stretch: extra-condensed;
+          text-align: center;
         }
 
         .container {
@@ -20,16 +37,80 @@
         }
 
         .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 40px auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 3em auto;
         }
 
         .logo {
-            max-width: calc(0.6 * 800px);
-            width: 60%;
-            height: auto;
+          max-width: calc(0.6 * 800px);
+          width: 60%;
+          min-width: 350px;
+          height: auto;
+        }
+
+        .blue_blob-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          left: calc(
+            50%
+            + 0.5 * min(
+              100vw * 0.8 /* container width */ * 0.6 /* logo width */,
+              0.6 * 800px /* max-width */
+            )
+            - 3em
+          );
+          width: calc(
+            /* logo image width */ min(
+              100vw * 0.8 /* container width */ * 0.6 /* logo width */,
+              0.6 * 800px /* max-width */
+            )
+            * 0.4 /* height:width ratio of logo */
+            * 2 /* slightly larger */
+          );
+          height: calc(
+            /* logo image width */ min(
+              100vw * 0.8 /* container width */ * 0.6 /* logo width */,
+              0.6 * 800px /* max-width */
+            )
+            * 0.4 /* height:width ratio of logo */
+            * 2 /* slightly larger */
+          );
+        }
+
+        .blue_blob {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        .blue_blob-container-text {
+          position: absolute;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          text-align: right;
+          font-weight: 300;
+          padding-top: 0.25em;
+          /*
+          5.5em is approx the right size for full-width logo
+          em = 16px
+          max-width logo: 0.6 * 800px
+
+          Find analog of 5.5em for the responsive logo size
+          */
+          font-size: calc((5.5 * 16) / (0.6 * 800) * min(
+            100vw * 0.8 * 0.6,
+            0.6 * 800px
+          ));
+          line-height: 0.8;
+          color: #0390D5;
+          font-stretch: extra-condensed;
         }
 
         .svg-container-wrapper {
@@ -95,6 +176,66 @@
           width: calc(15vw * 2); /* 15vw = .svg-container-wrapper height */
           max-width: calc(200px * 2); /* 200px = .svg-container-wrapper max-height */
           min-width: calc(120px * 2); /* 120px = .svg-container-wrapper min-height */
+        }
+
+        .title {
+          padding: 0.8em;
+          /*
+          2.5em is approx the right size for full-width breakpoint
+          em = 16px
+          breakpoint: 800px
+
+          Find analog of 2.5em for the responsive container size
+          */
+          font-size: 2.5em;
+        }
+
+        @media (max-width: 800px) {
+          .responsive-text {
+            white-space: normal;
+          }
+
+          .break-800px {
+            display: block;
+          }
+          
+          .title {
+            padding: 0em;
+            font-size: 2em;
+          }
+
+          .logo-container {
+            flex-direction: column;
+            margin: 4em auto 1em;
+          }
+
+          .blue_blob-container {
+            position: relative;
+            left: auto;
+            width: 100%;
+            height: 6em;
+            margin: 2em;
+          }
+
+          .blue_blob-container-text {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding-top: 0;
+            line-height: normal;
+          }
+
+          .blue_blob-container-text span {
+            margin: 0 5px;
+          }
+
+          .line-thick {
+            stroke-width: 20px;
+          }
+
+          .line-thin {
+            stroke-width: 8px;
+          }
         }
 
     </style>
@@ -214,8 +355,28 @@
 
     <div class="logo-container">
       <img src="transithack_logo.png" alt="Transit Hack Logo" class="logo">
+      <div class="blue_blob-container">
+        <svg class="blue_blob" viewBox="0 0 328 391" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <g filter="url(#filter0_f_238_236)">
+            <path d="M255.454 304.526C249.97 324.555 232.677 339.11 212.006 341.094L111.188 350.77C94.7089 352.352 78.5153 345.674 67.9408 332.937L52.3744 314.186C44.9234 305.211 40.8449 293.913 40.8449 282.249L40.8449 234.867C40.8449 229.523 41.7017 224.213 43.3828 219.139L89.6343 79.5635C95.8443 60.8229 112.5 47.4913 132.146 45.5366L184.572 40.3206C191.349 39.6463 198.192 40.3636 204.682 42.4286L241.351 54.0959C259.94 60.0105 273.392 76.1957 275.806 95.5526L286.118 178.21C286.928 184.703 286.456 191.292 284.728 197.603L255.454 304.526Z" fill="#e2f4fd"/>
+          </g>
+          <defs>
+            <filter id="filter0_f_238_236" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur_238_236"/>
+            </filter>
+          </defs>
+        </svg>
+        <div class="blue_blob-container-text">
+          <span>1-3</span>
+          <span>NOV</span>
+          <span>2024</span>
+        </div>
+      </div>
     </div>
 
+    <div class="titular title responsive-text"><span class="break-800px">PUBLIC TRANSPORT & URBAN PLANNING</span> <span class="break-800px">HACKATHON</span></div>
 
     <div class="svg-container-wrapper">
       <div class="svg-container">
