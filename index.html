@@ -10,6 +10,45 @@
           src: url("static/Acumin-Variable-Concept.ttf") format("truetype");
         }
 
+        :root {
+          --blue: #0390D5;
+          --orange: #FF4D00;
+          --purple: #CA009E;
+          --green: #009C4E;
+        }
+
+        .blue {
+          color: var(--blue);
+        }
+
+        .orange {
+          color: var(--orange);
+        }
+
+        .purple {
+          color: var(--purple);
+        }
+
+        .green {
+          color: var(--green);
+        }
+
+        .bold {
+          font-weight: 600;
+        }
+
+        .norm {
+          font-weight: 400;
+        }
+
+        .light {
+          font-weight: 300;
+        }
+
+        .lighter {
+          font-weight: 200;
+        }
+
         body, html {
             overflow-x: hidden;
             margin: 0;
@@ -152,7 +191,7 @@
             0.6 * 800px
           ));
           line-height: 0.8;
-          color: #0390D5;
+          color: var(--blue);
           font-stretch: extra-condensed;
         }
 
@@ -192,19 +231,19 @@
         }
 
         .line-orange {
-          stroke: #FF4D00;
+          stroke: var(--orange);
         }
 
         .line-purple {
-          stroke: #CA009E;
+          stroke: var(--purple);
         }
 
         .line-blue {
-          stroke: #0390D5;
+          stroke: var(--blue);
         }
 
         .line-green {
-          stroke: #009C4E;
+          stroke: var(--green);
         }
 
         .line-outer_continuation {
@@ -245,14 +284,14 @@
           display: inline-block;
           padding: 0.4em 0.5em 0.25em 0.5em;
           font-size: 2em;
-          color: #009C4E;
+          color: var(--green);
           font-weight: 600;
           border-radius: 0.25em;
-          border: 2px solid #009C4E;
+          border: 2px solid var(--green);
         }
 
         .solid-button:hover, .solid-button:focus, .solid-button:active {
-          background-color: #009C4E;
+          background-color: var(--green);
           display: inline-block;
           color: white;
           transition: 0.5s;
@@ -260,11 +299,11 @@
         }
 
         .line-button {
-          color: #009C4E;
+          color: var(--green);
           display: inline-block;
           padding: 0.25em 0.5em;
           font-size: 2em;
-          border-bottom: 2px solid #009C4E;
+          border-bottom: 2px solid var(--green);
         }
 
         @media (max-width: 800px) {
@@ -429,6 +468,44 @@
 
         h3 {
           font-size: 1.8em;
+        }
+
+        .full-width-section {
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+        }
+
+        .sponsors {
+          padding: 3em 0;
+          margin-top: 1em;
+          text-align: center;
+        }
+
+        .sponsor-logo-container {
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          margin-top: 1.5em;
+        }
+        
+        .sponsor-logo-container img {
+          height: 3em;
+          width: auto;
+          object-fit: cover;
+        }
+
+        .sponsor-logo-container #bhos_logo {
+          height: 3em;
+          margin-top: -0.5em;
+        }
+
+        .sponsor-logo-container #asap_logo {
+          height: 4.5em;
+          margin-top: -0.8em;
+        }
+
+        .sponsor-logo-container #socar_logo {
+          margin-top: -1.2em;
         }
 
     </style>
@@ -702,8 +779,14 @@
     </div>
 
     <div class="main-content">
-      <div class="sponsor-logo-container">
-        
+      <div class="full-width-section sponsors">
+        <h2 class="condensed blue norm">WITH SUPPORT FROM OUR GOLD PARTNERS:</h2>
+        <div class="sponsor-logo-container">
+          <img id="huawei_logo" src="static/huawei_logo.png" alt="Huawei Sponsor Logo">
+          <img id="bhos_logo" src="static/bhos_logo.png" alt="BHOS Sponsor Logo">
+          <img id="socar_logo" src="static/socar_logo.png" alt="SOCAR Sponsor Logo">
+          <img id="asap_logo" src="static/asap_logo.png" alt="ASAP Sponsor Logo">
+        </div>
       </div>
 
       <h1>Welcome to TransitHack: Revolutionizing Baku's Public Transport!</h1>
