@@ -60,7 +60,7 @@
           white-space: nowrap;
         }
 
-        .break-800px {
+        .break-900px {
           display: inline-block;
         }
 
@@ -77,7 +77,7 @@
         }
 
         .container {
-          max-width: 800px;
+          max-width: 900px;
           width: 80%;
           margin: 0 auto;
           overflow-x: visible;
@@ -106,7 +106,7 @@
         }
 
         .logo {
-          max-width: calc(0.6 * 800px);
+          max-width: calc(0.6 * 900px);
           width: 60%;
           min-width: 250px;
           height: auto;
@@ -121,14 +121,14 @@
             50%
             + 0.5 * min(
               100vw * 0.8 /* container width */ * 0.6 /* logo width */,
-              0.6 * 800px /* max-width */
+              0.6 * 900px /* max-width */
             )
             - 3em
           );
           width: calc(
             /* logo image width */ min(
               100vw * 0.8 /* container width */ * 0.6 /* logo width */,
-              0.6 * 800px /* max-width */
+              0.6 * 900px /* max-width */
             )
             * 0.4 /* height:width ratio of logo */
             * 2 /* slightly larger */
@@ -136,7 +136,7 @@
           height: calc(
             /* logo image width */ min(
               100vw * 0.8 /* container width */ * 0.6 /* logo width */,
-              0.6 * 800px /* max-width */
+              0.6 * 900px /* max-width */
             )
             * 0.4 /* height:width ratio of logo */
             * 2 /* slightly larger */
@@ -182,13 +182,13 @@
           /*
           5.5em is approx the right size for full-width logo
           em = 16px
-          max-width logo: 0.6 * 800px
+          max-width logo: 0.6 * 900px
 
           Find analog of 5.5em for the responsive logo size
           */
           font-size: calc((5.5 * 16) / (0.6 * 800) * min(
             100vw * 0.8 * 0.6,
-            0.6 * 800px
+            0.6 * 900px
           ));
           line-height: 0.8;
           color: var(--blue);
@@ -211,7 +211,7 @@
           display: flex;
           width: 100vw;
           /* together with width: 100vw breaks out of parent .container's width restrictions */
-          margin-left: calc(-1 * (50vw - (min(800px, 100vw * 0.8)) / 2));
+          margin-left: calc(-1 * (50vw - (min(900px, 100vw * 0.8)) / 2));
           height: 100%; /* Match the height of the inner SVG */
         }
 
@@ -306,7 +306,7 @@
           border-bottom: 2px solid var(--green);
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
           .hero-container-inner {
             max-height: 600px;
           }
@@ -315,7 +315,7 @@
             white-space: normal;
           }
 
-          .break-800px {
+          .break-900px {
             display: block;
           }
           
@@ -384,7 +384,7 @@
             white-space: normal;
           }
 
-          .break-800px {
+          .break-900px {
             display: block;
           }
           
