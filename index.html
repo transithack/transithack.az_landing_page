@@ -106,9 +106,6 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 20vh;
-          max-height: 170px;
-          min-height: 100px;
         }
 
         .logo {
@@ -204,9 +201,9 @@
         .svg-container-wrapper {
           position: relative;
           width: 100%;
-          max-height: 120px;
-          min-height: 100px;
-          height: 10vw;
+          /* WHY IS MIN-HEIGHT NECESSARY? */
+          min-height: 120px;
+          height: 120px;
           margin: 1em 0;
         }
 
@@ -215,9 +212,6 @@
           top: 0;
           left: 0;
           display: flex;
-          width: 100vw;
-          /* together with width: 100vw breaks out of parent .container's width restrictions */
-          margin-left: calc(-1 * (50vw - (min(900px, 100vw * 0.8)) / 2));
           height: 100%; /* Match the height of the inner SVG */
         }
 
@@ -351,7 +345,6 @@
 
           .logo-container {
             flex-direction: column;
-            height: 30vh;
             max-height: none;
           }
 
@@ -425,7 +418,6 @@
 
           .logo-container {
             flex-direction: column;
-            height: 30vh;
             max-height: none;
           }
 
@@ -654,7 +646,7 @@
 
     <div class="hero-container">
       <div class="svg-container-wrapper">
-        <div class="svg-container" id="line-ascend-orange">
+        <div class="svg-container full-width-section" id="line-ascend-orange">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
             <defs>
               <clipPath id="boundingBox">
@@ -739,7 +731,7 @@
           </svg>
         </div>
 
-        <div class="svg-container" id="line-straight-purple">
+        <div class="svg-container full-width-section" id="line-straight-purple">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
             <defs>
               <clipPath id="boundingBox">
@@ -802,7 +794,7 @@
 
 
       <div class="svg-container-wrapper">
-        <div class="svg-container">
+        <div class="svg-container full-width-section">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
             <defs>
               <clipPath id="boundingBox">
@@ -886,7 +878,7 @@
           </svg>
         </div>
 
-        <div class="svg-container" id="line-straight-green">
+        <div class="svg-container full-width-section" id="line-straight-green">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="line-outer_continuation">
             <defs>
               <clipPath id="boundingBox">
