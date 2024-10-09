@@ -458,6 +458,7 @@
 
         .main-content {
           font-size: 1.2em;
+          line-height: 1.4;
         }
 
         h1, h2, h3, h4 {
@@ -574,7 +575,41 @@
           font-weight: bold;
           color: var(--blue)
         }
+
+        .alt-header-wrapper {
+          margin-top: 10em;
+        }
+
+        .alt-header-wrapper h1 {
+          padding: 0;
+          margin: -.3em 0;
+        }
+
+        .alt-header-left {
+          text-align: left;
+        }
+
+        .alt-header-right {
+          text-align: right;
+        }
+
         @media (max-width: 900px) {
+          .main-content {
+            font-size: 1em;
+          }
+
+          h1 {
+            font-size: 2em;
+          }
+
+          h2 {
+            font-size: 1.75em;
+          }
+
+          h3 {
+            font-size: 1.5em;
+          }
+
           .sponsor-logo-container {
             flex-direction: column;
             align-items: center;
@@ -952,6 +987,15 @@
           </div>
         </div>
       </div>
+
+      <div class="alt-header-wrapper">
+        <h1 class="alt-header-left orange condensed">REIMAGINE PUBLIC TRANSPORT</h1>
+        <h1 class="alt-header-right purple condensed">REDUCE CAR TRAFFIC</h1>
+        <h1 class="alt-header-left blue condensed">TRANSFORM URBAN SPACES</h1>
+        <h1 class="alt-header-right green condensed">SHAPE THE BAKU OF FUTURE</h1>
+      </div>
+
+      <p>At TransitHack, you and your team, with enthusiasm in CS, engineering, urban design, public policy, economics, etc, will collaborate intensively over a week to solve our beautiful city's most pressing challenges.</p>
 
       <h3>What makes TransitHack special?</h3>
 
