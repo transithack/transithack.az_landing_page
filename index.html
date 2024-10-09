@@ -495,18 +495,18 @@
         }
         
         .sponsor-logo-container img {
-          height: 3em;
+          height: 2.5em;
           width: auto;
           object-fit: cover;
+          filter: brightness(0%);
         }
 
         .sponsor-logo-container #bhos_logo {
-          height: 3em;
           margin-top: -0.5em;
         }
 
         .sponsor-logo-container #asap_logo {
-          height: 4.5em;
+          height: 4em;
           margin-top: -0.8em;
         }
 
@@ -573,6 +573,17 @@
           /* background-color: #f4f4f4; */
           font-weight: bold;
           color: var(--blue)
+        }
+        @media (max-width: 900px) {
+          .sponsor-logo-container {
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1.5em;
+          }
+
+          .sponsor-logo-container #bhos_logo, #asap_logo, #socar_logo {
+            margin-top: 3em !important;
+          }
         }
 
         @media (max-width: 1000px) {
