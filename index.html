@@ -10,8 +10,14 @@
           src: url("static/Acumin-Variable-Concept.ttf") format("truetype");
         }
 
+        a {
+          text-decoration: underline;
+          color: unset;
+        }
+
         :root {
           --blue: #0390D5;
+          --lightblue: #e2f4fd;
           --orange: #FF4D00;
           --purple: #CA009E;
           --green: #009C4E;
@@ -508,6 +514,92 @@
           margin-top: -1.2em;
         }
 
+        .quick-facts {
+          background-color: var(--lightblue);
+          padding: 1em;
+          margin: 6em auto 0;
+          border-radius: 15%;
+          -webkit-box-shadow: 0px 0px 2em 2em var(--lightblue);
+          -moz-box-shadow: 0px 0px 2em 2em var(--lightblue);
+          box-shadow: 0px 0px 2em 2em var(--lightblue);
+        }
+
+        .quick-facts p {
+          padding: 1em 0;
+        }
+
+        .quick-facts h3 {
+          text-align: center;
+          margin: 0 0 0.5em 0;
+          color: var(--blue);
+        }
+
+        .note {
+          color: rgb(152, 152, 152);
+          font-size: 80%;
+        }
+
+        .table {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+        }
+
+        .column {
+          display: flex;
+          flex-direction: column;
+          /* To make equal width:
+          width: 49%; */
+        }
+
+        .row {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          margin-bottom: 10px;
+          /* border: 1px solid #ddd; */
+          border-bottom: 1px solid #b9e8ff;
+        }
+
+        .column .row:last-child {
+          border-bottom: none;
+        }
+
+        .cell {
+          padding: 0.5em 0;
+        }
+
+        .header-cell {
+          /* background-color: #f4f4f4; */
+          font-weight: bold;
+          color: var(--blue)
+        }
+
+        @media (max-width: 1000px) {
+          .quick-facts {
+            width: 100%;
+          }
+
+          .column {
+            width: 100%;
+          }
+
+          .row {
+            flex-direction: row;
+            flex-grow: unset;
+            height: unset;
+          }
+
+          .header-cell {
+            width: 9em;
+            flex-shrink: 0;
+          }
+
+          .content-cell {
+            flex-grow: 1;
+          }
+        }
+
     </style>
 </head>
 
@@ -789,13 +881,66 @@
         </div>
       </div>
 
-      <h1>Welcome to TransitHack: Revolutionizing Baku's Public Transport!</h1>
+      <div class="quick-facts">
+        <h3>Quick Facts</h3>
 
-      <p>Are you passionate about improving urban mobility? Join us for TransitHack, a groundbreaking hackathon focused on transforming Baku's public transportation system!</p>
+        <div class="table">
+          <div class="column">
+            <div class="row">
+              <div class="cell header-cell">Dates</div>
+              <div class="cell content-cell">1–3 Nov 2024 <span class="note">(development starts 1 week before)</span></div>
+            </div>
 
-      <h2>Event Overview</h2>
+            <div class="row">
+              <div class="cell header-cell">Location</div>
+              <div class="cell content-cell"><a href="https://maps.app.goo.gl/qnwfB5gUUa2Jw534A">Baku Higher Oil School (Main Campus)</a></div>
+            </div>
 
-      <p>TransitHack is a unique 48-hour event where participants will work on innovative solutions to enhance public transport coverage, efficiency, and attractiveness in Baku. Our goal? To reduce car usage and decrease traffic congestion in our beautiful city.</p>
+            <div class="row">
+              <div class="cell header-cell">Demographics</div>
+              <div class="cell content-cell">Workers & students, ages 18-27</div>
+            </div>
+
+            <div class="row">
+              <div class="cell header-cell">Disciplines</div>
+              <div class="cell content-cell">CompSci, Engineering, Urban Planning, etc.</div>
+            </div>
+            
+            <div class="row">
+              <div class="cell header-cell">Participation fee</div>
+              <div class="cell content-cell">Free</div>
+            </div>
+          </div>
+
+
+          <div class="column">
+            <div class="row">
+              <div class="cell header-cell">Hybrid Mode</div>
+              <div class="cell content-cell">On-site & online</div>
+            </div>
+
+            <div class="row">
+              <div class="cell header-cell">Participation</div>
+              <div class="cell content-cell">Team & solo <span class="note">(we'll help you find a team!)</span></div>
+            </div>
+            
+            <div class="row">
+              <div class="cell header-cell">Total teams</div>
+              <div class="cell content-cell">14 in-person, 14 remote (max)</div>
+            </div>
+
+            <div class="row">
+              <div class="cell header-cell">Food & drinks</div>
+              <div class="cell content-cell">Free, high-quality lunch, coffee breaks, snacks</div>
+            </div>
+
+            <div class="row">
+              <div class="cell header-cell">Prize fund</div>
+              <div class="cell content-cell">12500 AZN</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <h3>What makes TransitHack special?</h3>
 
@@ -837,7 +982,7 @@
 
       <ul>
           <li><strong>Duration</strong>: 48 hours of intense collaboration and innovation</li>
-          <li><strong>Team Formation</strong>: Form teams of 3-5 people or join as an individual and meet new teammates</li>
+          <li><strong>Team Formation</strong>: Form teams of 3-6 people or join as an individual and meet new teammates</li>
           <li><strong>Mentorship</strong>: Access to expert mentors in urban planning, technology, and transportation</li>
           <li><strong>Workshops</strong>: Skill-building sessions on relevant tools and methodologies</li>
           <li><strong>Judging</strong>: Present your project to a panel of esteemed experts in the field</li>
