@@ -451,11 +451,20 @@
 
         .main-content {
           font-size: 1.2em;
-          line-height: 1.4;
+          line-height: normal;
+        }
+
+        .main-content p, .main-content li {
+          line-height: 1.8;
+        }
+
+        b {
+          font-weight: 600;
         }
 
         h1, h2, h3, h4 {
           font-stretch: condensed;
+          color: var(--blue);
         }
 
         h1 {
@@ -468,6 +477,10 @@
 
         h3 {
           font-size: 1.8em;
+        }
+
+        li {
+          margin-top: 0.5em;
         }
 
         .full-width-section {
@@ -509,13 +522,9 @@
         }
 
         .quick-facts {
-          background-color: var(--lightblue);
           padding: 1em;
-          margin: 6em auto 0;
-          border-radius: 15%;
-          -webkit-box-shadow: 0px 0px 2em 2em var(--lightblue);
-          -moz-box-shadow: 0px 0px 2em 2em var(--lightblue);
-          box-shadow: 0px 0px 2em 2em var(--lightblue);
+          margin: 4em auto 0;
+          border-radius: 3em;
         }
 
         .quick-facts p {
@@ -551,7 +560,6 @@
           flex-direction: column;
           flex-grow: 1;
           margin-bottom: 10px;
-          /* border: 1px solid #ddd; */
           border-bottom: 1px solid #b9e8ff;
         }
 
@@ -564,18 +572,17 @@
         }
 
         .header-cell {
-          /* background-color: #f4f4f4; */
           font-weight: bold;
           color: var(--blue)
         }
 
         .alt-header-wrapper {
-          margin-top: 10em;
+          margin-top: 4em;
         }
 
         .alt-header-wrapper h1 {
           padding: 0;
-          margin: -.3em 0;
+          margin: -.1em 0;
         }
 
         .alt-header-left {
@@ -588,7 +595,7 @@
 
         @media (max-width: 900px) {
           .main-content {
-            font-size: 1em;
+            font-size: 1.2em;
           }
 
           h1 {
@@ -788,7 +795,7 @@
 
         <div class="text-wrapper">
           <div class="condensed title responsive-text"><span class="break-900px">PUBLIC TRANSPORT &</span> <span class="break-900px">URBAN PLANNING</span> <span class="break-900px">HACKATHON</span></div>
-          <div class="condensed subtitle responsive-text"><span class="break-900px">BAKU HIGHER OIL SCHOOL</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px">ON-SITE & ONLINE</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px">FREE PARTICIPATION</span></div>
+          <div class="condensed subtitle responsive-text"><span class="break-900px">BAKU HIGHER OIL SCHOOL</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px">ON-SITE & ONLINE</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px">FREE PARTICIPATION</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px"><b>12500 AZN</b> PRIZE FUND</span></div>
           <a href="https://forms.gle/47LgVoxu85xfpWeKA" target="_blank"><span class="solid-button condensed">SIGN UP NOW</span></a>
         </div>
       </div>
@@ -913,10 +920,10 @@
       <div class="full-width-section sponsors">
         <h2 class="condensed blue norm">WITH SUPPORT FROM <span class="break-900px"></span>OUR GOLD PARTNERS:</h2>
         <div class="sponsor-logo-container">
-          <img id="huawei_logo" src="static/huawei_logo.png" alt="Huawei Sponsor Logo">
+          <img id="huawei_logo" src="static/huawei_logo.svg" alt="Huawei Sponsor Logo">
           <img id="bhos_logo" src="static/bhos_logo.png" alt="BHOS Sponsor Logo">
           <img id="socar_logo" src="static/socar_logo.png" alt="SOCAR Sponsor Logo">
-          <img id="asap_logo" src="static/asap_logo.png" alt="ASAP Sponsor Logo">
+          <img id="asap_logo" src="static/asap_monochrome_logo.png" alt="ASAP Sponsor Logo">
         </div>
       </div>
 
@@ -969,7 +976,7 @@
             </div>
 
             <div class="row">
-              <div class="cell header-cell">Food & drinks</div>
+              <div class="cell header-cell">Venue</div>
               <div class="cell content-cell">Free, high-quality lunch, coffee breaks, snacks</div>
             </div>
 
@@ -988,66 +995,52 @@
         <h1 class="alt-header-right green condensed">SHAPE THE BAKU OF FUTURE</h1>
       </div>
 
-      <p>At TransitHack, you and your team, with enthusiasm in CS, engineering, urban design, public policy, economics, etc, will collaborate intensively over a week to solve our beautiful city's most pressing challenges.</p>
+      <p style="font-size: 1.3em;">At TransitHack, you and your team, with enthusiasm in CS, engineering, urban design, public policy, economics, etc, will collaborate intensively over a week to solve our beautiful city's most pressing challenges.</p>
 
-      <h3>What makes TransitHack special?</h3>
+      <h3>What can you work on?</h3>
 
-      <ol>
-          <li><strong>Research &amp; Development Focus</strong>: We prioritize solving real urban challenges over creating business models. Your ideas don't need to be the next unicorn startup - they just need to make a positive impact on Baku's transportation system.</li>
-
-          <li><strong>Interdisciplinary Approach</strong>: This isn't just a coding event! We welcome participants from various backgrounds, including:
-              <ul>
-                  <li>Software development</li>
-                  <li>Urban planning</li>
-                  <li>Civil engineering</li>
-                  <li>Mathematics</li>
-                  <li>Economics</li>
-                  <li>Public policy</li>
-                  <li>And more!</li>
-              </ul>
-          </li>
-
-          <li><strong>Real-World Impact</strong>: Your projects will be judged based on their potential to improve public utility, value to citizens, innovation, and feasibility.</li>
-      </ol>
-
-      <h2>Project Ideas</h2>
+      <p>Anything! As long as it makes the commuters happier, public transport faster, more efficient, scalable, the roads better, less congested, and hopefully decreases car usage. Most importantly, <b>this is not purely a coding competition! We welcome research as much as technical prototypes.</b></p>
 
       <p>Need inspiration? Here are some potential project areas:</p>
 
       <ol>
           <li><strong>On-Demand Public Transport</strong>: Design a system for dynamic minibus routes based on real-time passenger demand.</li>
-
           <li><strong>Public Transport Coverage Heatmap</strong>: Create an algorithm to visualize and quantify the quality of public transport connections across Baku.</li>
-
           <li><strong>Extended Service Hours Analysis</strong>: Conduct a cost-benefit analysis of extending public transport operating hours.</li>
-
           <li><strong>Traffic Flow Optimization</strong>: Develop solutions to redistribute traffic from major avenues to smaller streets, improving overall city mobility.</li>
-
           <li><strong>Regional Rail Network Planning</strong>: Propose an optimal railway route for the greater Baku area, including cost-benefit analysis.</li>
       </ol>
+
+
+
+      <h3>What makes TransitHack special?</h3>
+
+      <ol>
+          <li><strong>Research &amp; Development Focus</strong>: We prioritize solving real urban challenges over creating business models. Your ideas don't need to be the next unicorn startup – your projects will be judged based on their potential to improve public utility, value to citizens, innovation, and feasibility.</li>
+          <li><strong>Interdisciplinary Approach</strong>: This isn't just a coding event! We welcome participants from various backgrounds, including, but not limited to:
+              <ul>
+                  <li>Software development</li>
+                  <li>Urban planning</li>
+                  <li>Engineering (civil, industrial, electrical, any discipline really)</li>
+                  <li>Mathematics</li>
+                  <li>Economics</li>
+                  <li>Public policy</li>
+              </ul>
+          </li>
+      </ol>
+
+
 
       <h2>What to Expect</h2>
 
       <ul>
-          <li><strong>Duration</strong>: 48 hours of intense collaboration and innovation</li>
-          <li><strong>Team Formation</strong>: Form teams of 3-6 people or join as an individual and meet new teammates</li>
-          <li><strong>Mentorship</strong>: Access to expert mentors in urban planning, technology, and transportation</li>
-          <li><strong>Workshops</strong>: Skill-building sessions on relevant tools and methodologies</li>
-          <li><strong>Judging</strong>: Present your project to a panel of esteemed experts in the field</li>
+          <li><strong>Duration</strong>: <strong>development will kick off a week before the event officially starts, 25 Oct</strong>. This is to ensure you have enough time to achieve really outstanding results!</li>
+          <li><strong>Mentorship</strong>: On-demand access to expert mentors in urban planning, software engineering, and data science, starting from 25 Oct</li>
+          <li><strong>Workshops</strong>: Practical training sessions from experts in urban planning, data science, computer science, and more!</li>
+          <li><strong>Prizes</strong>: our prize pool is a whopping 12500 AZN, which we will distribute into 5 prize places across 2 tracks: development & research</li>
+          <li><strong>Venue</strong>: on 2 and 3 Nov, you'll be in Baku Higher Oil School, with high-quality amenities, great lunch & coffee breaks</li>
+          <li><strong>No fees</strong>: the event is completely free to participate in, thanks to our generous partners, Huawei, SOCAR and BHOS.</li>
       </ul>
-
-      <h2>Judging Criteria</h2>
-
-      <p>Your projects will be evaluated based on:</p>
-      <ul>
-          <li>Public utility and value to citizens</li>
-          <li>Innovation and creativity</li>
-          <li>Technical feasibility</li>
-          <li>Quality of research and analysis</li>
-          <li>Potential for real-world implementation</li>
-      </ul>
-
-      <p>Note: We focus on the quality of your ideas and solutions, not on polished presentations or business pitches.</p>
 
       <h2>Ready to Transform Baku's Transportation?</h2>
 
@@ -1058,39 +1051,6 @@
   </div>
 
   <script>
-  /*****************************************************************************
-  *                                                                            *
-  *  SVG Path Rounding Function                                                *
-  *  Copyright (C) 2014 Yona Appletree                                         *
-  *                                                                            *
-  *  Licensed under the Apache License, Version 2.0 (the "License");           *
-  *  you may not use this file except in compliance with the License.          *
-  *  You may obtain a copy of the License at                                   *
-  *                                                                            *
-  *      http://www.apache.org/licenses/LICENSE-2.0                            *
-  *                                                                            *
-  *  Unless required by applicable law or agreed to in writing, software       *
-  *  distributed under the License is distributed on an "AS IS" BASIS,         *
-  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *
-  *  See the License for the specific language governing permissions and       *
-  *  limitations under the License.                                            *
-  *                                                                            *
-  *****************************************************************************/
-
-  /**
-   * SVG Path rounding function. Takes an input path string and outputs a path
-   * string where all line-line corners have been rounded. Only supports absolute
-   * commands at the moment.
-   * 
-   * @param pathString The SVG input path
-   * @param radius The amount to round the corners, either a value in the SVG 
-   *               coordinate space, or, if useFractionalRadius is true, a value
-   *               from 0 to 1.
-   * @param useFractionalRadius If true, the curve radius is expressed as a
-   *               fraction of the distance between the point being curved and
-   *               the previous and next points.
-   * @returns A new SVG path string with the rounding
-   */
   function roundPathCorners(pathString, radius, useFractionalRadius) {
     function moveTowardsLength(movingPoint, targetPoint, amount) {
       var width = (targetPoint.x - movingPoint.x);
