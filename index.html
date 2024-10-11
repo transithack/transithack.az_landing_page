@@ -4,6 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transit Hack</title>
+
+    <style>
+      /*
+        1. Use a more-intuitive box-sizing model.
+      */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      /*
+        2. Remove default margin
+      */
+      * {
+        margin: 0;
+      }
+
+      /*
+        Typographic tweaks!
+        3. Add accessible line-height
+        4. Improve text rendering
+      */
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /*
+        5. Improve media defaults
+      */
+      img, picture, video, canvas, svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      /*
+        6. Remove built-in form typography styles
+      */
+      input, button, textarea, select {
+        font: inherit;
+      }
+
+      /*
+        7. Avoid text overflows
+      */
+      p, h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+      }
+
+      /*
+        8. Create a root stacking context
+      */
+      #root, #__next {
+        isolation: isolate;
+      }
+    </style>
+
     <style>
         @font-face {
           font-family: "Acumin";
@@ -308,6 +364,10 @@
         }
 
         @media (max-width: 900px) {
+          .container {
+            width: 90%;
+          }
+          
           .hero-container-inner {
             max-height: 600px;
           }
@@ -467,16 +527,26 @@
           color: var(--blue);
         }
 
+        p {
+          margin: 1em 0;
+        }
+
         h1 {
           font-size: 3em;
+          margin-top: 2.5em;
+          margin-top: 1.5em;
         }
 
         h2 {
           font-size: 2.5em;
+          margin-top: 1.5em;
+          margin-bottom: 0.6em;
         }
 
         h3 {
           font-size: 1.8em;
+          margin-top: 1.25em;
+          margin-bottom: 0.5em;
         }
 
         li {
@@ -498,7 +568,7 @@
           display: flex;
           justify-content: space-evenly;
           align-items: center;
-          margin-top: 1.5em;
+          margin-top: 2em;
         }
         
         .sponsor-logo-container img {
@@ -509,17 +579,16 @@
         }
 
         .sponsor-logo-container #bhos_logo {
-          margin-top: -0.5em;
+          margin-top: -0.25em;
+          height: 3.75em;
         }
 
         .sponsor-logo-container #asap_logo {
-          height: 4em;
-          margin-top: -0.8em;
+          height: 4.25em;
+          margin-top: -0.7em;
         }
 
-        .sponsor-logo-container #socar_logo {
-          margin-top: -1.2em;
-        }
+        .sponsor-logo-container #socar_logo {}
 
         .quick-facts {
           padding: 1em;
@@ -578,6 +647,7 @@
 
         .alt-header-wrapper {
           margin-top: 4em;
+          margin-bottom: 2em;
         }
 
         .alt-header-wrapper h1 {
@@ -591,6 +661,72 @@
 
         .alt-header-right {
           text-align: right;
+        }
+
+        .projects-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: stretch;
+        }
+
+        .project {
+          width: 250px;
+          background-color: var(--lightblue);
+          border: 1px solid var(--blue);
+          border-radius: 1em;
+          overflow: hidden;
+          font-size: 0.9em;
+        }
+
+        .project p {
+          margin-top: 0.75em;
+          margin-bottom: 0;
+        }
+
+        .project h4 {
+          font-size: 1.2em;
+          padding: 0;
+          margin: 0;
+        }
+
+        .project-thumbnail {
+          height: calc(250px * 2 / 3);
+          background-size: cover;
+        }
+
+        .project-content {
+          padding: 1em 0.8em;
+        }
+
+        #microtransit {
+          background-image: url('./static/microtransit.svg');
+        }
+
+        #heatmap {
+          background-image: url('./static/heatmap.jpg');
+        }
+
+        #traffic {
+          background-image: url('./static/traffic.jpg');
+        }
+
+        @media (max-width: calc((750px + 25px * 2) / 0.8)) {
+          .projects-container {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .project {
+            width: 70%;
+            min-width: 250px;
+            margin: 1em 0;
+          }
+
+          .project-thumbnail {
+            height: 30vw;
+            max-height: 300px;
+          }
         }
 
         @media (max-width: 900px) {
@@ -976,7 +1112,7 @@
             </div>
 
             <div class="row">
-              <div class="cell header-cell">Venue</div>
+              <div class="cell header-cell">Catering</div>
               <div class="cell content-cell">Free, high-quality lunch, coffee breaks, snacks</div>
             </div>
 
@@ -1003,15 +1139,31 @@
 
       <p>Need inspiration? Here are some potential project areas:</p>
 
-      <ol>
-          <li><strong>On-Demand Public Transport</strong>: Design a system for dynamic minibus routes based on real-time passenger demand.</li>
-          <li><strong>Public Transport Coverage Heatmap</strong>: Create an algorithm to visualize and quantify the quality of public transport connections across Baku.</li>
-          <li><strong>Extended Service Hours Analysis</strong>: Conduct a cost-benefit analysis of extending public transport operating hours.</li>
-          <li><strong>Traffic Flow Optimization</strong>: Develop solutions to redistribute traffic from major avenues to smaller streets, improving overall city mobility.</li>
-          <li><strong>Regional Rail Network Planning</strong>: Propose an optimal railway route for the greater Baku area, including cost-benefit analysis.</li>
-      </ol>
+      <div class="projects-container">
+        <div class="project">
+          <div id="microtransit" class="project-thumbnail"></div>
+          <div class="project-content">
+            <h4>On-Demand Public Transport</h4>
+            <p>Design a system for dynamic minibus routes based on real-time passenger demand.</p>
+          </div>
+        </div>
 
+        <div class="project">
+          <div id="heatmap" class="project-thumbnail"></div>
+          <div class="project-content">
+            <h4>Public Transport Coverage Heatmap</h4>
+            <p>Create an algorithm to visualize and quantify the quality of public transport connections across the city.</p>
+          </div>
+        </div>
 
+        <div class="project">
+          <div id="traffic" class="project-thumbnail"></div>
+          <div class="project-content">
+            <h4>Traffic Flow Optimization</h4>
+            <p>Develop solutions to redistribute traffic from major avenues to smaller streets, improving overall city mobility.</p>
+          </div>
+        </div>
+      </div>
 
       <h3>What makes TransitHack special?</h3>
 
@@ -1035,10 +1187,10 @@
 
       <ul>
           <li><strong>Duration</strong>: <strong>development will kick off a week before the event officially starts, 25 Oct</strong>. This is to ensure you have enough time to achieve really outstanding results!</li>
-          <li><strong>Mentorship</strong>: On-demand access to expert mentors in urban planning, software engineering, and data science, starting from 25 Oct</li>
+          <li><strong>Mentorship</strong>: On-demand access to expert mentors in urban planning, software engineering, and data science, starting from 25 Oct.</li>
           <li><strong>Workshops</strong>: Practical training sessions from experts in urban planning, data science, computer science, and more!</li>
-          <li><strong>Prizes</strong>: our prize pool is a whopping 12500 AZN, which we will distribute into 5 prize places across 2 tracks: development & research</li>
-          <li><strong>Venue</strong>: on 2 and 3 Nov, you'll be in Baku Higher Oil School, with high-quality amenities, great lunch & coffee breaks</li>
+          <li><strong>Prizes</strong>: our prize pool is a whopping 12500 AZN, which we will distribute into 5 prize places across 2 tracks: development & research.</li>
+          <li><strong>Venue</strong>: from 1 to 3 Nov, you'll be in Baku Higher Oil School, with high-quality amenities, great lunch & coffee breaks.</li>
           <li><strong>No fees</strong>: the event is completely free to participate in, thanks to our generous partners, Huawei, SOCAR and BHOS.</li>
       </ul>
 
