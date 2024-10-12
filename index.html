@@ -151,7 +151,7 @@
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          min-height: 100vh;
+          min-height: 100dvh;
           height: auto;
         }
 
@@ -173,72 +173,33 @@
         }
 
         .blue_blob-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: absolute;
-          left: calc(
-            50%
-            + 0.5 * min(
-              100vw * 0.8 /* container width */ * 0.6 /* logo width */,
-              0.6 * 900px /* max-width */
-            )
-            - 3em
-          );
-          width: calc(
-            /* logo image width */ min(
-              100vw * 0.8 /* container width */ * 0.6 /* logo width */,
-              0.6 * 900px /* max-width */
-            )
-            * 0.4 /* height:width ratio of logo */
-            * 2 /* slightly larger */
-          );
-          height: calc(
-            /* logo image width */ min(
-              100vw * 0.8 /* container width */ * 0.6 /* logo width */,
-              0.6 * 900px /* max-width */
-            )
-            * 0.4 /* height:width ratio of logo */
-            * 2 /* slightly larger */
-          );
-          /* animation: floatAnimation 6s ease-in-out infinite; */
-        }
-
-        @keyframes floatAnimation {
-          0% {
-            transform: translate(0, 0);
-          }
-          25% {
-            transform: translate(5px, 5px);
-          }
-          50% {
-            transform: translate(0, 5px);
-          }
-          75% {
-            transform: translate(-5px, 0);
-          }
-          100% {
-            transform: translate(0, 0);
-          }
+          position: relative;
+          display: inline-block;
+          padding: 1em 2em;
         }
 
         .blue_blob {
           position: absolute;
           width: 100%;
           height: 100%;
-          object-fit: contain;
-          min-height: 100px;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          fill: var(--lightblue);
+        }
+
+        .blue_blob-mobile {
+          display: none;
         }
 
         .blue_blob-container-text {
-          position: absolute;
           z-index: 1;
           display: flex;
           flex-direction: column;
           align-items: flex-end;
           text-align: right;
           font-weight: 300;
-          padding-top: 0.25em;
+          padding-top: 0.2em;
           /*
           5.5em is approx the right size for full-width logo
           em = 16px
@@ -246,7 +207,7 @@
 
           Find analog of 5.5em for the responsive logo size
           */
-          font-size: calc((5.5 * 16) / (0.6 * 800) * min(
+          font-size: calc((5 * 16) / (0.6 * 800) * min(
             100vw * 0.8 * 0.6,
             0.6 * 900px
           ));
@@ -259,8 +220,8 @@
           position: relative;
           width: 100%;
           /* WHY IS MIN-HEIGHT NECESSARY? */
-          min-height: 120px;
-          height: 120px;
+          min-height: 110px;
+          height: 110px;
           margin: 1em 0;
         }
 
@@ -410,10 +371,16 @@
           }
 
           .blue_blob-container {
-            position: relative;
-            left: auto;
-            width: 100%;
-            height: 6em;
+            margin-top: 1em;
+            padding: 1em 3em;
+          }
+
+          .blue_blob-desktop {
+            display: none;
+          }
+
+          .blue_blob-mobile {
+            display: initial;
           }
 
           .blue_blob-container-text {
@@ -432,6 +399,16 @@
 
           .line-thin {
             stroke-width: 8px;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .blue_blob-container {
+            padding: 0.75em 2em;
+          }
+          
+          .blue_blob-container-text {
+            font-size: 2.5em;
           }
         }
 
@@ -482,16 +459,8 @@
             max-height: none;
           }
 
-          .blue_blob-container {
-            position: relative;
-            left: auto;
-            width: 100%;
-            height: 6em;
-          }
-
           .blue_blob-container-text {
-            flex-direction: row;
-            font-size: 2.5em;
+            font-size: 2em;
           }
 
           .blue_blob-container-text span {
@@ -641,7 +610,7 @@
         }
 
         .header-cell {
-          font-weight: bold;
+          font-weight: 600;
           color: var(--blue)
         }
 
@@ -724,7 +693,7 @@
           }
 
           .project-thumbnail {
-            height: 30vw;
+            height: 45vw;
             max-height: 300px;
           }
         }
@@ -735,7 +704,7 @@
           }
 
           h1 {
-            font-size: 2em;
+            font-size: 1.7em;
           }
 
           h2 {
@@ -782,6 +751,41 @@
           }
         }
 
+        /* CSS specific to iOS devices */ 
+        @supports (-webkit-touch-callout: none) {
+          h1, h2, h3, h4, b, .header-cell, .solid-button {
+            font-weight: 550;
+          }
+        }
+
+        @media (prefers-color-scheme: dark) {
+          body {
+            color: white; /* Set the default text color for dark mode */
+            background-color: #111;
+          }
+
+          /* Reset all text elements to inherit their color */
+          h1, h2, h3, h4, h5, h6, p, span, div, a, li /* add any other text elements you use */ {
+            color: inherit;
+          }
+
+          .blue_blob {
+            fill: none;
+            stroke: var(--blue);
+          }
+
+          .project {
+            background-color: initial;
+          }
+
+          .project p {
+            color: var(--blue);
+          }
+
+          .sponsor-logo-container img {
+            filter: brightness(0) invert(1);
+          }
+        }
     </style>
 </head>
 
@@ -907,19 +911,23 @@
 
       <div class="hero-container-inner">
         <div class="logo-container">
-          <img src="static/transithack.svg" alt="Transit Hack Logo" class="logo">
+          <picture class="logo">
+            <!-- User prefers light mode: -->
+            <source srcset="static/transithack.svg" media="(prefers-color-scheme: light)"/>
+
+            <!-- User prefers dark mode: -->
+            <source srcset="static/transithack_dark.svg"  media="(prefers-color-scheme: dark)"/>
+
+            <!-- User has no color preference: -->
+            <img src="static/transithack.svg" alt="Transit Hack Logo" />
+          </picture>
+
           <div class="blue_blob-container">
-            <svg class="blue_blob" viewBox="0 0 328 391" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <g filter="url(#filter0_f_238_236)">
-                <path d="M255.454 304.526C249.97 324.555 232.677 339.11 212.006 341.094L111.188 350.77C94.7089 352.352 78.5153 345.674 67.9408 332.937L52.3744 314.186C44.9234 305.211 40.8449 293.913 40.8449 282.249L40.8449 234.867C40.8449 229.523 41.7017 224.213 43.3828 219.139L89.6343 79.5635C95.8443 60.8229 112.5 47.4913 132.146 45.5366L184.572 40.3206C191.349 39.6463 198.192 40.3636 204.682 42.4286L241.351 54.0959C259.94 60.0105 273.392 76.1957 275.806 95.5526L286.118 178.21C286.928 184.703 286.456 191.292 284.728 197.603L255.454 304.526Z" fill="#e2f4fd"/>
-              </g>
-              <defs>
-                <filter id="filter0_f_238_236" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                  <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur_238_236"/>
-                </filter>
-              </defs>
+            <svg class="blue_blob blue_blob-desktop" viewBox="0 0 180 282" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.37108 245.675L43.5331 17.4501C45.2506 7.92738 53.5391 1 63.2155 1H152.301C163.161 1 172.037 9.66669 172.295 20.5237L178.012 260.524C178.28 271.753 169.25 281 158.018 281H31.8947C13.1949 281 -0.948025 264.078 2.37108 245.675Z" stroke-width="2"/>
+            </svg>
+            <svg class="blue_blob blue_blob-mobile" viewBox="0 0 212 103" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.93821 73.2703L33.5323 12.2702C36.8765 5.37694 43.8648 1 51.5265 1H190.068C204.831 1 214.506 16.4471 208.062 29.7298L178.468 90.7299C175.123 97.6231 168.135 102 160.474 102H21.9324C7.16903 102 -2.50587 86.553 3.93821 73.2703Z" stroke-width="2"/>
             </svg>
             <div class="blue_blob-container-text">
               <span>1-3</span>
@@ -931,7 +939,7 @@
 
         <div class="text-wrapper">
           <div class="condensed title responsive-text"><span class="break-900px">PUBLIC TRANSPORT &</span> <span class="break-900px">URBAN PLANNING</span> <span class="break-900px">HACKATHON</span></div>
-          <div class="condensed subtitle responsive-text"><span class="break-900px">BAKU HIGHER OIL SCHOOL</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px">ON-SITE & ONLINE</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px">FREE PARTICIPATION</span> <span class="break-disappear delimiter">  |  </span> <span class="break-900px"><b>12500 AZN</b> PRIZE FUND</span></div>
+          <div class="condensed subtitle responsive-text">BAKU HIGHER OIL SCHOOL<span class="delimiter">|</span> ON-SITE & ONLINE <span class="break-disappear delimiter">|</span> <span class="break-900px">FREE PARTICIPATION <span class="delimiter">|</span> <b>12500 AZN</b> PRIZE FUND</span></div>
           <a href="https://forms.gle/47LgVoxu85xfpWeKA" target="_blank"><span class="solid-button condensed">SIGN UP NOW</span></a>
         </div>
       </div>
@@ -1168,8 +1176,8 @@
       <h3>What makes TransitHack special?</h3>
 
       <ol>
-          <li><strong>Research &amp; Development Focus</strong>: We prioritize solving real urban challenges over creating business models. Your ideas don't need to be the next unicorn startup – your projects will be judged based on their potential to improve public utility, value to citizens, innovation, and feasibility.</li>
-          <li><strong>Interdisciplinary Approach</strong>: This isn't just a coding event! We welcome participants from various backgrounds, including, but not limited to:
+          <li><b>Research &amp; Development Focus</b>: We prioritize solving real urban challenges over creating business models. Your ideas don't need to be the next unicorn startup – your projects will be judged based on their potential to improve public utility, value to citizens, innovation, and feasibility.</li>
+          <li><b>Interdisciplinary Approach</b>: This isn't just a coding event! We welcome participants from various backgrounds, including, but not limited to:
               <ul>
                   <li>Software development</li>
                   <li>Urban planning</li>
@@ -1186,12 +1194,12 @@
       <h2>What to Expect</h2>
 
       <ul>
-          <li><strong>Duration</strong>: <strong>development will kick off a week before the event officially starts, 25 Oct</strong>. This is to ensure you have enough time to achieve really outstanding results!</li>
-          <li><strong>Mentorship</strong>: On-demand access to expert mentors in urban planning, software engineering, and data science, starting from 25 Oct.</li>
-          <li><strong>Workshops</strong>: Practical training sessions from experts in urban planning, data science, computer science, and more!</li>
-          <li><strong>Prizes</strong>: our prize pool is a whopping 12500 AZN, which we will distribute into 5 prize places across 2 tracks: development & research.</li>
-          <li><strong>Venue</strong>: from 1 to 3 Nov, you'll be in Baku Higher Oil School, with high-quality amenities, great lunch & coffee breaks.</li>
-          <li><strong>No fees</strong>: the event is completely free to participate in, thanks to our generous partners, Huawei, SOCAR and BHOS.</li>
+          <li><b>Duration</b>: <b>development will kick off a week before the event officially starts, 25 Oct</b>. This is to ensure you have enough time to achieve really outstanding results!</li>
+          <li><b>Mentorship</b>: On-demand access to expert mentors in urban planning, software engineering, and data science, starting from 25 Oct.</li>
+          <li><b>Workshops</b>: Practical training sessions from experts in urban planning, data science, computer science, and more!</li>
+          <li><b>Prizes</b>: our prize pool is a whopping 12500 AZN, which we will distribute into 5 prize places across 2 tracks: development & research.</li>
+          <li><b>Venue</b>: from 1 to 3 Nov, you'll be in Baku Higher Oil School, with high-quality amenities, great lunch & coffee breaks.</li>
+          <li><b>No fees</b>: the event is completely free to participate in, thanks to our generous partners, Huawei, SOCAR and BHOS.</li>
       </ul>
 
       <h2>Ready to Transform Baku's Transportation?</h2>
@@ -1214,7 +1222,7 @@
             <g clip-path="url(#boundingBox)">
               <path
                 class="line line-thick line-orange"
-                id="line-thick-orange-left"
+                id="line-thick-orange-left-footer"
                 d="M 0,90
                   L 100,90"
               />
@@ -1223,7 +1231,7 @@
             <g clip-path="url(#boundingBox)">
               <path
                 class="line line-thin line-orange"
-                id="line-thin-orange-left"
+                id="line-thin-orange-left-footer"
                 d="M 0,90
                   L 100,90"
               />
@@ -1240,7 +1248,7 @@
             <g clip-path="url(#boundingBox)">
               <path
                 class="line line-thick line-orange"
-                id="line-thick-orange-center"
+                id="line-thick-orange-center-footer"
                 d="M 0,90
                   L 30,90
                   L 70,10
@@ -1252,7 +1260,7 @@
             <g clip-path="url(#boundingBox)">
               <path
                 class="line line-thin line-orange"
-                id="line-thin-orange-center"
+                id="line-thin-orange-center-footer"
                 d="M 0,90
                   L 30,90
                   L 70,10
@@ -1271,7 +1279,7 @@
             <g clip-path="url(#boundingBox)">
               <path
                 class="line line-thick line-orange"
-                id="line-thick-orange-right"
+                id="line-thick-orange-right-footer"
                 d="M 0,10
                   L 100,10"
               />
@@ -1280,7 +1288,7 @@
             <g clip-path="url(#boundingBox)">
               <path
                 class="line line-thin line-orange"
-                id="line-thin-orange-right"
+                id="line-thin-orange-right-footer"
                 d="M 0,10
                   L 100,10"
               />
@@ -1298,7 +1306,7 @@
 
             <g clip-path="url(#boundingBox)">
               <path
-                id="line-thick-purple"
+                id="line-thick-purple-footer"
                 class="line line-thick line-purple"
                 d="M 0,50
                   L 100,50"
@@ -1307,7 +1315,7 @@
 
             <g clip-path="url(#boundingBox)">
               <path
-                id="line-thin-purple"
+                id="line-thin-purple-footer"
                 class="line line-thin line-purple"
                 d="M 0,50
                   L 100,50"
@@ -1317,8 +1325,8 @@
         </div>
       </div>
 
-      <div style="width: 100%; text-align: center;">Copyright 2024 © <a href="https://linkedin.com/in/rafasofizada">Rafael Sofi-zada</a>, <a href="https://www.linkedin.com/in/parviz-hamidov-09ab24180/">Parviz Hamidov</a>, "CodeLeague Azerbaijan" MMC</div>
-      <div style="width: 100%; text-align: center; margin-top: 0.5em; margin-bottom: 4em;"><a href="https://www.instagram.com/transithack/">Instagram: @transithack</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>admin@codeleague.az</span></div>
+      <div style="width: 100%; text-align: center; font-size: 0.8em;">Copyright 2024 © <a href="https://linkedin.com/in/rafasofizada">Rafael Sofi-zada</a>, <a href="https://www.linkedin.com/in/parviz-hamidov-09ab24180/">Parviz Hamidov</a>, <a href="https://www.linkedin.com/in/roman-tolstosheyev/">Roman Tolstosheyev</a></div>
+      <div style="width: 100%; text-align: center; margin-top: 0.5em; margin-bottom: 4em; font-size: 0.8em;"><a href="https://www.instagram.com/transithack/">Instagram: @transithack</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>admin@codeleague.az</span></div>
 
     </div>
   </div>
@@ -1584,7 +1592,11 @@
         document.getElementById('line-thin-orange-center'),
         document.getElementById('line-thick-orange-center'),
         document.getElementById('line-thin-blue-center'),
-        document.getElementById('line-thick-blue-center')
+        document.getElementById('line-thick-blue-center'),
+        document.getElementById('line-thick-blue-center'),
+        document.getElementById('line-thick-blue-center'),
+        document.getElementById('line-thin-orange-center-footer'),
+        document.getElementById('line-thick-orange-center-footer'),
       ]) {
         const path = e.getAttribute('d').replace(/\s+/g, ' ').replaceAll('\n', ' ');
         const roundedPath = roundPathCorners(path, 0.1, true);
